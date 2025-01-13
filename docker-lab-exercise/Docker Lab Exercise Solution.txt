@@ -1,0 +1,115 @@
+Q1. Install Docker on your system and verify the successful installation.
+Ans.    curl -fsSL https://get.docker.com -o get-docker.sh
+	sudo sh ./get-docker.sh --dry-run
+
+Q2. Check the Docker service status and ensure it is running.
+Ans. docker version
+
+Q3. Pull the ubuntu base image from Docker Hub.
+Ans. docker pull ubuntu
+
+Q4. List all the Docker images available on your local system.
+Ans. docker image ls
+
+Q5. Inspect the downloaded ubuntu image in the repositories and display its low-level information.
+Ans. docker image inspect ubuntu:latest
+
+Q6. Create a new Docker container using the ubuntu image
+Ans. docker container create ubuntu:latest
+
+Q7. Create another Docker container using the ubuntu image and name it test.
+Ans. docker container create --name test ubuntu:latest
+
+Q8. Create an interactive container named user1 using the ubuntu image and start a bash shell inside it.
+Ans. docker container run -it --name user1 --rm ubuntu:latest /bin/bash
+
+Q9. Start the user1 container
+Ans. docker container start user1
+
+Q10. Attach to the running user1 container
+Ans. docker container exec -it user1 /bin/bash
+
+Q11. Stop the user1 container
+Ans. docker container stop user1
+
+Q12. Restart the user1 container and attach to it interactively. 
+Ans. docker container restart user1 && docker container exec -it user1 /bin/bash
+
+Q13. A) Write shell scripts for creating 100 containers. 
+Ans. 	#!/bin/bash
+
+	for i in {1..100}
+	do
+   		docker container create ubuntu:latest
+	done
+
+Q13. B) Delete 100 containers.
+Ans. 	#!/bin/bash
+
+	# prune: Remove all stopped containers
+	docker container prune
+
+Q13. C) Create 10 containers named user1 to user10.
+Ans.	#!/bin/bash
+
+	for i in {1..10}
+	do
+		docker container create --name user$i  ubuntu:latest
+	done
+
+Q13. D) Start the 10 containers.
+Ans.	#!/bin/bash
+
+	for i in {1..10}
+	do
+		docker container start user$i
+	done
+
+Q14. Monitor computing resource usage for all 10 running containers.
+Ans. docker container stats user{1..10}
+
+Q15. Monitor computing resource usage specifically for the user5 container.
+Ans. docker container stats user5
+
+Q16. Check the Docker logs for the user3 container.
+Ans. docker container logs user3
+
+Q17. Check the Docker logs for the user3 container in real-time.
+Ans. docker logs -f user3
+
+Q18. Display the detailed runtime details, operational data, and configurations of the Docker environment.
+Ans. 
+
+Q19. Display the history of the ubuntu Docker image.
+Ans. docker history ubuntu:latest
+
+Q20. Search and display the details of the Jenkins Docker image.
+Ans. docker search jenkins
+
+Q21. Remove all existing containers with a single command.
+Ans. docker container rm -f user{1..10}
+
+Q22. Remove the ubuntu Docker image.
+Ans. docker image rm ubuntu:latest
+
+Q23. Create a file named user.txt in the host system and copy it to the user1 container. Then, create a file named test.txt in the user1 container and copy it back to the host system.
+Ans.
+	# Host to container
+	docker container cp user.txt user1:/
+
+	# Container to Host
+	docker container cp user1:/test.txt .
+
+Q24. 
+
+Q25. Run a container named user3 in the background using the ubuntu image, and attach to the container to interact with it.
+Ans. 	docker container -d --name user3 ubuntu:latest
+	docker exec -it user3 /bin/bash
+
+Q26. List all running containers by inspecting the /var/lib/docker/containers directory.
+Ans. ls /var/lib/docker/containers
+
+Q27. Check the log file for a specific running container in the /var/lib/docker/containers directory.
+Ans. sudo cat /var/lib/docker/containers/4cb21a67fa54ba50456c2e59e8a6fe653a8ef7e368e229dbae079f6fde0a2d33/4cb21a67fa54ba50456c2e59e8a6fe653a8ef7e368e229dbae079f6fde0a2d33-json.log
+
+
