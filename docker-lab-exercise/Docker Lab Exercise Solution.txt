@@ -1,3 +1,4 @@
+======================================================= I Docker basic commands =========================================
 Q1. Install Docker on your system and verify the successful installation.
 Ans.    curl -fsSL https://get.docker.com -o get-docker.sh
 	sudo sh ./get-docker.sh --dry-run
@@ -110,6 +111,26 @@ Q26. List all running containers by inspecting the /var/lib/docker/containers di
 Ans. ls /var/lib/docker/containers
 
 Q27. Check the log file for a specific running container in the /var/lib/docker/containers directory.
+??? from here until ???END lines may have been inserted/deleted
 Ans. sudo cat /var/lib/docker/containers/4cb21a67fa54ba50456c2e59e8a6fe653a8ef7e368e229dbae079f6fde0a2d33/4cb21a67fa54ba50456c2e59e8a6fe653a8ef7e368e229dbae079f6fde0a2d33-json.log
+
+Q31. Working with Docker Volumes
+Ans. a) Create a volume named devtest
+  	docker volume create devtest
+
+     b) Verify the volume creation by listing all the available Docker volumes.
+     	docker volume ls
+
+     c) Inspect the devtest volume to check its properties.
+        docker volume inspect devtest
+	
+     d) Run a container using the ubuntu image and mount the devtest volume to /usr/src/app in the container.
+        docker container run -it --name user1 --mount type=volume,src=devtest,dst=/usr/src/app ubuntu:latest
+
+     e) Start another container and mount the devtest volume to /app. Verify that all the 100 files are accessible in the /app directory.
+        docker container run -it --name user2 --mount type=volume,src=devtest,dst=/usr/src/app ubuntu:latest
+
+     f) Remove the devtest volume after completing the above steps.
+     	docker volume rm devtest
 
 
