@@ -1,0 +1,11 @@
+FROM ubuntu:latest
+
+RUN apt update --fix-missing && apt install -y apache2 --fix-missing && apt install -y apache2-utils --fix-missing
+
+EXPOSE 80
+
+WORKDIR /etc/apache2/
+
+RUN echo "ServerName localhost" >> apache2.conf
+
+CMD ["apache2ctl", "-D", "FOREGROUND"]
