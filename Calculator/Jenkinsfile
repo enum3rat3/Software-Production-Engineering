@@ -1,0 +1,32 @@
+pipeline {
+	agent any
+	
+	stages {
+		stage('checkout') {
+			steps{
+				script{
+					git branch: 'main', url:'https://github.com/enum3rat3/Software-Production-Engineering.git'
+				}
+			}
+		}
+		
+		stage('Build Docker Image') {
+			steps{
+				script{
+					docker.build('calculator', 'Calculator/Dockerfile')
+				}
+			}
+		}
+		
+		stage('Push Docker Image') {
+			steps{
+				script{
+					docker.withRegistry('', 'docker-hub-creds') {
+						sh 'docker tag calculator enum3rat3/calculator:v1'
+                    	sh 'docker push enum3rat3/calculator:v1'
+                    }
+				}
+			}
+		}
+	}
+}
