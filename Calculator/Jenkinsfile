@@ -31,7 +31,7 @@ pipeline {
 		stage('Deployment using Ansible')
 		{
 			steps{
-				sh 'ansible-playbook deploy.yml -i inventory'
+				sh 'ansible-playbook Calculator/deploy.yml -i Calculator/inventory'
 			}
 		}
 	}
