@@ -3,14 +3,6 @@ package com.enum3rat3;
 import java.util.Scanner;
 
 public class Calc {
-    public static long factorial(long a)
-    {
-        if(a == 0 || a == 1)
-            return 1;
-
-        return a * factorial(a - 1);
-    }
-
     public static void main( String[] args )
     {
         while(true)
@@ -27,7 +19,7 @@ public class Calc {
             System.out.println("9. Exit");
 
             Scanner scanner = new Scanner(System.in);
-            System.out.print("Enter which operation you want to perform: ");
+            System.out.print("Enter choice: ");
             int op = scanner.nextInt();
 
 
@@ -39,7 +31,7 @@ public class Calc {
             else if(op == 5)
             {
                 // Square Root
-                System.out.println("Enter number: ");
+                System.out.print("Enter number: ");
                 double a = scanner.nextDouble();
 
                 if(a < 0)
@@ -48,14 +40,14 @@ public class Calc {
                 }
                 else
                 {
-                    System.out.println("Square of " + a + " : " + Math.round(Math.sqrt(a) * 100.0) / 100.0);
+                    System.out.println("Square of " + a + " : " + sqaureRoot(a));
                 }
                 continue;
             }
             else if(op == 6)
             {
                 // Factorial
-                System.out.println("Enter number: ");
+                System.out.print("Enter number: ");
                 double a = scanner.nextDouble();
 
                 if(a < 0)
@@ -71,10 +63,10 @@ public class Calc {
             else if(op == 7)
             {
                 // Natural Log
-                System.out.println("Enter number: ");
+                System.out.print("Enter number: ");
                 double a = scanner.nextDouble();
 
-                System.out.println("Natural Log of " + a + " : " + Math.log(a));
+                System.out.println("Natural Log of " + a + " : " + naturalLog(a));
                 continue;
             }
 
@@ -86,21 +78,21 @@ public class Calc {
 
             if(op == 1)
             {
-                System.out.println("Addition of " + a + " + " + b + " = " + (a + b));
+                System.out.println("Addition of " + a + " + " + b + " = " + addition(a, b));
             }
             else if(op == 2)
             {
-                System.out.println("Subtraction of " + a + " - " + b + " = " + (a - b));
+                System.out.println("Subtraction of " + a + " - " + b + " = " + subtraction(a, b));
             }
             else if (op == 3)
             {
-                System.out.println("Multiplication of " + a + " * " + b + " = " + Math.round(a * b * 100.0) / 100.0);
+                System.out.println("Multiplication of " + a + " * " + b + " = " + multiplication(a, b));
             }
             else if (op == 4)
             {
                 if(b != 0)
                 {
-                    System.out.println("Division of " + a + " / " + b + " = " + Math.round((a / b) * 100.0) / 100.0);
+                    System.out.println("Division of " + a + " / " + b + " = " + division(a, b));
                 }
                 else
                 {
@@ -110,7 +102,7 @@ public class Calc {
             else if(op == 8)
             {
                 // Power Function
-                System.out.println((long)a + "^" + (long)b + " : " + Math.round(Math.pow((long)a, (long)b)));
+                System.out.println((long)a + "^" + (long)b + " : " + powerFunction((long)a, (long)b));
             }
             else
             {
@@ -118,5 +110,56 @@ public class Calc {
                 break;
             }
         }
+    }
+
+    // ------------------ Factorial ---------------
+    public static long factorial(long a)
+    {
+        if(a == 0 || a == 1)
+            return 1;
+
+        return a * factorial(a - 1);
+    }
+
+    // ----------------- Square Root ---------------
+    public static double sqaureRoot(double a)
+    {
+        return Math.round(Math.sqrt(a) * 100.0) / 100.0;
+    }
+
+    // ----------------- Natural Log ---------------
+    public static double naturalLog(double a)
+    {
+        return Math.log(a);
+    }
+
+    // ----------------- Power Function ----------------
+    public static long powerFunction(long a, long b)
+    {
+        return Math.round(Math.pow(a, b));
+    }
+
+    // ---------------- Addition -----------------
+    public static double addition(double a, double b)
+    {
+        return a + b;
+    }
+
+    // -------------- Subtraction ---------------
+    public static double subtraction(double a, double b)
+    {
+        return a - b;
+    }
+
+    // --------------- Multiplication --------------
+    public static double multiplication(double a, double b)
+    {
+        return Math.round(a * b * 100.0) / 100.0;
+    }
+
+    // --------------- Division ---------------
+    public static double division(double a, double b)
+    {
+        return Math.round(a / b * 100.0) / 100.0;
     }
 }
