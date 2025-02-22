@@ -13,7 +13,7 @@ pipeline {
 		stage('Build Docker Image') {
 			steps{
 				script{
-					docker.build('calculator', 'Calculator/Dockerfile')
+					dockerImage = docker.build('enum3rat3/calculator:v1', 'Calculator/')
 				}
 			}
 		}
@@ -22,8 +22,7 @@ pipeline {
 			steps{
 				script{
 					docker.withRegistry('', 'docker-hub-creds') {
-						sh 'docker tag calculator enum3rat3/calculator:v1'
-                    	sh 'docker push enum3rat3/calculator:v1'
+						dockerImage.push()
                     }
 				}
 			}
