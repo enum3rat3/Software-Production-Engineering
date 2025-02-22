@@ -3,10 +3,10 @@
 
 Problem Statement
 Create a scientific calculator program with the following user menu driven operations:
-  ● Square root function - √x
-  ● Factorial function - x!
-  ● Natural logarithm (base е) - ln(x)
-  ● Power function - xb
+  1. Square root function - √x
+  2. Factorial function - x!
+  3. Natural logarithm (base е) - ln(x)
+  4. Power function - xb
 
 DevOps tool chain
 You can use any set of DevOps tool chains you want, but the pipeline would be the same.
