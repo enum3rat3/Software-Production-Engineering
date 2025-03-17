@@ -22,7 +22,6 @@ public class Calc {
             System.out.print("Enter choice: ");
             int op = scanner.nextInt();
 
-
             if(op == 9)
             {
                 System.out.println("Exiting....");
