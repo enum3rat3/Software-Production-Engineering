@@ -9,7 +9,7 @@ class CalcTest {
     @Test
     void testTwoPlusMinusTwoEqualsToZero()
     {
-        double expected = 1;
+        double expected = 0;
         assertEquals(expected, Calc.addition(2, -2));
     }
 
