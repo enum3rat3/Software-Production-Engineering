@@ -1,0 +1,25 @@
+---
+- name: Example Playbook with variable data types
+  hosts: localhost
+  vars:
+   string_var: "Hello, World!"
+   num_var: 42
+   list_var:
+    - item1
+    - item2
+    - item3
+   dict_var:
+    key1: value_1
+    key2: value_2
+    key3: value_3
+   bool_var: true
+ 
+  tasks:
+   - name: Display Varibles
+     debug:
+      msg:
+       - "String Variable: {{string_var}}"
+       - "Numerical Variable: {{num_var}}"
+       - "list variable: {{list_var}}"
+       - "dict_var: {{dict_var}}"
+       - "Boolean Variable: {{bool_var}}"
