@@ -1,0 +1,19 @@
+# To get resources types supported
+kubectl api-resources
+
+# Pods
+1. To run the pod:
+	kubectl run <pod-name> --image=<image-name>
+2. To execute command inside the pod
+	kubectl exec <pod-name> -it -- <cmd>
+3. To get all pods
+	kubectl get pod [-n <namespace> or --all-namespaces]
+4. To get details of particular pod
+	kubectl describe pod <pod-name>
+5. To create pod or apply configuration
+	kubectl apply -f <file-name>
+6. To delete pod
+	kubectl delete pod <pod-name>
+	kubectl delete -f <filename>
+7. To get logs details
+	kubectl logs <pod-name>  
